@@ -14,6 +14,7 @@ public class RepositorioEquipamento
         contadorEquipamentos++;
     }
 
+    
     public bool EditarEquipamento( int idSelecionado, Equipamento equipamentoAtualizado)
     {
         Equipamento equipamentoSelecionado = SelecionarEquipamentoPorId(idSelecionado);

@@ -32,6 +32,15 @@ internal class Program
                     telaEquipamento.ExcluirRegistro();
                     break;
 
+                case '5':
+                    telaEquipamento.CadastrarManutencao();
+                    break;
+
+                case '6':
+                    telaEquipamento.VisualizarRegistroManutencao(true);
+                    break;
+
+
             }
         }
     }
