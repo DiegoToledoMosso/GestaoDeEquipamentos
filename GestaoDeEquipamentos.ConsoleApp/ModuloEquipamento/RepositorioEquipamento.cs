@@ -1,4 +1,4 @@
-﻿namespace GestaoDeEquipamentos.ConsoleApp;
+﻿namespace GestaoDeEquipamentos.ConsoleApp.ModuloEquipamento;
 
 // Dados
 public class RepositorioEquipamento
@@ -13,7 +13,6 @@ public class RepositorioEquipamento
 
         contadorEquipamentos++;
     }
-
     
     public bool EditarEquipamento( int idSelecionado, Equipamento equipamentoAtualizado)
     {
@@ -31,9 +30,7 @@ public class RepositorioEquipamento
         equipamentoSelecionado.dataFabricacao = equipamentoAtualizado.dataFabricacao;
 
         return true;
-    }
-
-    
+    }    
 
     public bool ExcluirEquipamento(int idSelecionado)
     {
