@@ -40,6 +40,16 @@ internal class Program
                     telaEquipamento.VisualizarRegistroManutencao(true);
                     break;
 
+                case '7':
+                    telaEquipamento.EditarChamados();
+                    break;
+
+                case '8':
+                    telaEquipamento.ExcluirChamados();
+                    break;
+
+
+
 
             }
         }
