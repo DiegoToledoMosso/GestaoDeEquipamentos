@@ -1,7 +1,7 @@
-﻿using GestaoDeEquipamentos.ConsoleApp.ModuloChamados;
+﻿using GestaoDeEquipamentos.ConsoleApp.Compartilhado;
+using GestaoDeEquipamentos.ConsoleApp.ModuloChamado;
 using GestaoDeEquipamentos.ConsoleApp.ModuloEquipamento;
 using GestaoDeEquipamentos.ConsoleApp.ModuloFabricante;
-using System.ComponentModel.Design;
 
 namespace GestaoDeEquipamentos.ConsoleApp;
 
@@ -10,16 +10,26 @@ class Program
     static void Main(string[] args)
     {
 
-        TelaEquipamento telaEquipamento = new TelaEquipamento();
-        TelaChamado telaChamado = new TelaChamado();
-        TelaFabricante telaFabricante = new TelaFabricante();
+        RepositorioFabricante repositorioFabricante = new RepositorioFabricante();
+        RepositorioEquipamento repositorioEquipamento = new RepositorioEquipamento();
+        RepositorioChamado repositorioChamado = new RepositorioChamado();
 
+        TelaFabricante telaFabricante = new TelaFabricante(repositorioFabricante);
+
+        TelaEquipamento telaEquipamento = new TelaEquipamento();
+        telaEquipamento.repositorioEquipamento = repositorioEquipamento;
+        telaEquipamento.repositorioFabricante = repositorioFabricante;
+
+        TelaChamado telaChamado = new TelaChamado();
+        telaChamado.repositorioChamado = repositorioChamado;
+        telaChamado.repositorioEquipamento = repositorioEquipamento;
 
         while (true)
         {
-
             char telaEscolhida = ApresentarMenuPrincipal();
 
+            if (telaEscolhida == 'S' || telaEscolhida == 's')
+                break;
 
             if (telaEscolhida == '1')
             {
@@ -28,8 +38,6 @@ class Program
                 if (opcaoEscolhida == 'S')
                     break;
 
-
-
                 switch (opcaoEscolhida)
                 {
                     case '1':
@@ -37,7 +45,7 @@ class Program
                         break;
 
                     case '2':
-                        telaEquipamento.VisualizarRegistro(true);
+                        telaEquipamento.VisualizarRegistros(true);
                         break;
 
                     case '3':
@@ -48,8 +56,8 @@ class Program
                         telaEquipamento.ExcluirRegistro();
                         break;
                 }
-
             }
+
             else if (telaEscolhida == '2')
             {
                 char opcaoEscolhida = telaChamado.ApresentarMenu();
@@ -60,21 +68,20 @@ class Program
                 switch (opcaoEscolhida)
                 {
                     case '1':
-                        telaChamado.CadastrarManutencao();
+                        telaChamado.CadastrarRegistro();
                         break;
 
                     case '2':
-                        telaChamado.VisualizarRegistroManutencao(true);
+                        telaChamado.VisualizarRegistros(true);
                         break;
 
                     case '3':
-                        telaChamado.EditarChamados();
+                        telaChamado.EditarRegistro();
                         break;
 
                     case '4':
-                        telaChamado.ExcluirChamados();
+                        telaChamado.ExcluirRegistro();
                         break;
-
                 }
             }
 
@@ -88,25 +95,20 @@ class Program
                 switch (opcaoEscolhida)
                 {
                     case '1':
-                        telaFabricante.CadastrarFabricante();
+                        telaFabricante.CadastrarRegistro();
                         break;
 
                     case '2':
-                        telaFabricante.VisualizarRegistroFabricante(true);
+                        telaFabricante.VisualizarRegistros(true);
                         break;
 
                     case '3':
-                        telaFabricante.EditarFabricante();
+                        telaFabricante.EditarRegistro();
                         break;
 
                     case '4':
-                        telaFabricante.ExcluirFabricante();
+                        telaFabricante.ExcluirRegistro();
                         break;
-
-                    case '5':
-                        telaFabricante.CadastroEquipamentos();
-                        break;
-
                 }
             }
 
@@ -117,9 +119,9 @@ class Program
     {
         Console.Clear();
 
-        Console.WriteLine("----------------------------------------------------");
-        Console.WriteLine("|              Gestão de Equipamentos              |");
-        Console.WriteLine("----------------------------------------------------");
+        Console.WriteLine("----------------------------------------");
+        Console.WriteLine("|        Gestão de Equipamentos        |");
+        Console.WriteLine("----------------------------------------");
 
         Console.WriteLine();
 
@@ -130,12 +132,9 @@ class Program
 
         Console.WriteLine();
 
-        Console.WriteLine("Escolha umna das opções a seguir: ");
+        Console.Write("Escolha uma das opções: ");
         char opcaoEscolhida = Console.ReadLine()[0];
 
         return opcaoEscolhida;
-
     }
 }
-
-   

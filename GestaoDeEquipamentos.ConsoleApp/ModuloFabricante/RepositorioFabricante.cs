@@ -1,10 +1,25 @@
 ﻿
-using GestaoDeEquipamentos.ConsoleApp.ModuloChamados;
+using GestaoDeEquipamentos.ConsoleApp.Compartilhado;
+using GestaoDeEquipamentos.ConsoleApp.ModuloChamado;
 
 namespace GestaoDeEquipamentos.ConsoleApp.ModuloFabricante;
 
-public class RepositorioFabricante
-{
+public class RepositorioFabricante : RepositorioBase;
+
+
+
+
+
+
+
+
+
+
+
+
+/*{
+
+    
     public Fabricante[] fabricantes = new Fabricante[100];
 
     public int contadorFabricante = 0;
@@ -73,4 +88,4 @@ public class RepositorioFabricante
         return null;
     }
 
-}
+}*/
