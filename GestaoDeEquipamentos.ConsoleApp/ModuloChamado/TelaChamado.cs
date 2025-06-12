@@ -30,11 +30,11 @@ public class TelaChamado : TelaBase
             "Id", "Título", "Descrição", "Data de Abertura", "Equipamento"
         );
 
-        Chamado[] chamados = repositorioChamado.SelecionarChamados();
+        EntidadeBase[] chamados = repositorioChamado.SelecionarRegistros();
 
         for (int i = 0; i < chamados.Length; i++)
         {
-            Chamado c = chamados[i];
+            Chamado c = (Chamado)chamados[i];
 
             if (c == null)
                 continue;
