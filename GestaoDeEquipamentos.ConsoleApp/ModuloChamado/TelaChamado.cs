@@ -117,7 +117,7 @@ public class TelaChamado
         Console.ReadLine();
     }
 
-    public void VisualizarRegistros(bool exibirCabecalho)
+    public  void VisualizarRegistros(bool exibirCabecalho)
     {
         if (exibirCabecalho == true)
             ExibirCabecalho();
