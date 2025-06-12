@@ -5,8 +5,14 @@ namespace GestaoDeEquipamentos.ConsoleApp.ModuloEquipamento;
 
 public class TelaEquipamento
 {
-    public RepositorioEquipamento repositorioEquipamento;
-    public RepositorioFabricante repositorioFabricante;
+    private RepositorioEquipamento repositorioEquipamento;
+    private RepositorioFabricante repositorioFabricante;
+
+    public TelaEquipamento(RepositorioEquipamento repositorioEquipamento, RepositorioFabricante repositorioFabricante)
+    {
+        this.repositorioEquipamento = repositorioEquipamento;
+        this.repositorioFabricante = repositorioFabricante;
+    }
 
     public void ExibirCabecalho()
     {

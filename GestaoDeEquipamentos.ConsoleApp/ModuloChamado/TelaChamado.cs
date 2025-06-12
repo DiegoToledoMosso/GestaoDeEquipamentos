@@ -1,13 +1,20 @@
 ﻿
 using GestaoDeEquipamentos.ConsoleApp.Compartilhado;
 using GestaoDeEquipamentos.ConsoleApp.ModuloEquipamento;
+using GestaoDeEquipamentos.ConsoleApp.ModuloFabricante;
 
 namespace GestaoDeEquipamentos.ConsoleApp.ModuloChamado;
 
 public class TelaChamado
 {
-    public RepositorioEquipamento repositorioEquipamento;
-    public RepositorioChamado repositorioChamado;
+    private RepositorioEquipamento repositorioEquipamento;
+    private RepositorioChamado repositorioChamado;
+
+    public TelaChamado(RepositorioChamado repositorioChamado, RepositorioEquipamento repositorioEquipamento)
+    {
+        this.repositorioChamado = repositorioChamado;
+        this.repositorioEquipamento = repositorioEquipamento;
+    }
 
     public void ExibirCabecalho()
     {

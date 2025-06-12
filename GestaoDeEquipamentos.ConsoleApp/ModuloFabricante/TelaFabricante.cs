@@ -4,67 +4,15 @@ using GestaoDeEquipamentos.ConsoleApp.ModuloEquipamento;
 
 namespace GestaoDeEquipamentos.ConsoleApp.ModuloFabricante;
 
-public class TelaFabricante
+public class TelaFabricante : TelaBase
 {
     private RepositorioFabricante repositorioFabricante;
 
-    public TelaFabricante(RepositorioFabricante repositorioF)
+    public TelaFabricante(RepositorioFabricante repositorioFabricante) : base ("Fabricante", repositorioFabricante)
     {
-        repositorioFabricante = repositorioF;
-    }
-
-    public char ApresentarMenu()
-    {
-        ExibirCabecalho();
-
-        Console.WriteLine("1 - Cadastro de Fabricante");
-        Console.WriteLine("2 - Visualizar Fabricantes");
-        Console.WriteLine("3 - Editar Fabricante");
-        Console.WriteLine("4 - Excluir Fabricante");
-        Console.WriteLine("S - Sair");
-
-        Console.WriteLine();
-
-        Console.Write("Digite uma opção válida: ");
-        char opcaoEscolhida = Console.ReadLine().ToUpper()[0];
-
-        return opcaoEscolhida;
-    }
-
-    public void CadastrarRegistro()
-    {
-        ExibirCabecalho();
-
-        Console.WriteLine("Cadastro de Fabricantes");
-
-        Console.WriteLine();
-
-        Fabricante novoFabricante = ObterDados();
-
-        string erros = novoFabricante.Validar();
-
-        if (erros.Length > 0)
-        {
-            Console.WriteLine();
-
-            Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine(erros);
-            Console.ResetColor();
-
-            Console.Write("\nDigite ENTER para continuar...");
-            Console.ReadLine();
-
-            CadastrarRegistro();
-
-            return;
-        }
-
-        repositorioFabricante.CadastrarRegistro(novoFabricante);
-
-        Console.WriteLine($"\nFabricante \"{novoFabricante.nome}\" cadastrado com sucesso!");
-        Console.ReadLine();
-    }
-
+        this.repositorioFabricante = repositorioFabricante;
+    }      
+ 
     public void EditarRegistro()
     {
         ExibirCabecalho();
@@ -141,14 +89,8 @@ public class TelaFabricante
         Console.ReadLine();
     }
 
-    private void ExibirCabecalho()
-    {
-        Console.Clear();
-        Console.WriteLine("Gestão de Fabricantes");
-        Console.WriteLine();
-    }
-
-    private Fabricante ObterDados()
+    
+    protected override Fabricante ObterDados()
     {
         Console.Write("Digite o nome do fabricante: ");
         string nome = Console.ReadLine();
