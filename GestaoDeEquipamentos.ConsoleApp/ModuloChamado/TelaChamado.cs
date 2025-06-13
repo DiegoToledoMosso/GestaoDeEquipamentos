@@ -10,7 +10,7 @@ public class TelaChamado : TelaBase
     private RepositorioEquipamento repositorioEquipamento;
     private RepositorioChamado repositorioChamado;
 
-    public TelaChamado(RepositorioChamado repositorioChamado, RepositorioEquipamento repositorioEquipamento) : base("Chamado", repositorioEquipamento)
+    public TelaChamado(RepositorioChamado repositorioChamado, RepositorioEquipamento repositorioEquipamento) : base("Chamado", repositorioChamado)
     { 
         this.repositorioChamado = repositorioChamado;
         this.repositorioEquipamento = repositorioEquipamento;
@@ -73,7 +73,7 @@ public class TelaChamado : TelaBase
 
         return chamado;
     }
-    public void VisualizarEquipamentos()
+    private void VisualizarEquipamentos()
     {
         Console.WriteLine();
 
